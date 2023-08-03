@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./components.css">
+  <link rel="stylesheet" type="text/css" href="./colors.css">
+  <link rel="stylesheet" type="text/css" href="./cssDefault.css">
+  <link rel="stylesheet" type="text/css" href="./menu-modern.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css.css">
+</head>
+<body class="vertical-layout vertical-menu-modern 2-columns   menu-collapsed" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+
+  <div class="app-content content" style="margin-left: 0">
+      <div class="content-overlay"></div>
+      <div class="content-wrapper">
+          <div class="content-body">
+              <section id="number-tabs">
+                  <div class="row">
+                      <div class="col-12">
+                          <form id="formularioCliente">
+                              <div class="card">
+                                  <div class="card-header div-header">
+                                      <h4 class="card-title">Informaci&oacute;n del cliente</h4>
+                                      <div class="card-icon">
+                                          <i id="expand-cliente" class="fa fa-expand" ></i>
+                                          <i id="minus-cliente" class="fa fa-minus" ></i>
+                                      </div>
+                                  </div>
+                                  <div id="InfoCliente" class="card-content collapse hide">
+                                      <div class="card-body">
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Identificación:</label>
+                                                      <input type="text" id="txtPersonaidentificacion"  class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtPersonaidentificacionError"></span>
+                                                      <input type="hidden" id="txtIdSolicitud"/>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Nombre:</label>
+                                                      <input type="text" id="txtPersonaNombre" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtPersonaNombreError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Apellido 1:</label>
+                                                      <input type="text" id="txtPersonaApellido1" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtPersonaApellido1Error"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Apellido 2:</label>
+                                                      <input type="text" id="txtPersonaApellido2" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtPersonaApellido2Error"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>País Nacimiento:</label>
+                                                      <select id="cboPersonaPais" class="form-control select bloqueadoAuditado"></select>
+                                                      <span class="text-danger error-message" id="cboPersonaPaisError"></span>
+                                                      <input type="hidden" id="PaisNacimiento" />
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Fecha nacimiento:</label>
+                                                      <input type="text" id="txtPersonaFecNancimiento" class="form-control bloqueaAuditado" onchange="CalcularEdad(this.id);" value="" name="date" placeholder="dd/mm/yyyy"
+                                                             onkeyup="this.value=formateafecha(this.value);"
+                                                             maxlength="10" autocomplete="off">
+                                                      <span class="text-danger error-message" id="txtPersonaFecNancimientoError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Nacionalidad:</label>
+                                                      <select id="cboPersonaNacionalidad" class="form-control select bloqueaAuditado"></select>
+                                                      <span class="text-danger error-message" id="cboPersonaNacionalidadError"></span>
+                                                      <input type="hidden" id="Nacionalidad" class="form-control" disabled="disabled"/>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>G&eacute;nero:</label>
+                                                      <select id="cboGenero" class="form-control bloqueaAuditado"></select>
+                                                      <span class="text-danger error-message" id="cboGeneroError"></span>
+                                                      <input type="hidden" id="Par_valor"/>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Actividad Econ&oacute;mica:</label>
+                                                      <select id="cboPersonaActividadEconomica" class="form-control"></select>
+                                                      <span class="text-danger error-message" id="cboPersonaActividadEconomicaError"></span>
+                                                      <input type="hidden" id="ActividadEconomica"/>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Profesion:</label>
+                                                      <select id="selPuesto" class="form-control select bloqueaAuditado"></select>
+                                                      <span class="text-danger error-message" id="selPuestoError"></span>
+                                                      <input type="hidden" id="Puesto"/>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Medio:</label>
+                                                      <select id="cboMedio" class="form-control select bloqueaAuditado"></select>
+                                                      <span class="text-danger error-message" id="cboMedioError"></span>
+                                                      <input type="hidden" id="Id_medios"/>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Nombre Conyuge:</label>
+                                                      <input type="text" id="txtConyuge" class="form-control bloqueaAuditado"/>
+                                                      <span class="text-danger error-message" id="txtConyugeError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Correo:</label>
+                                                      <input type="text" id="txtPersonaCorreo" class="form-control bloqueaAuditado"/>
+                                                      <span class="text-danger error-message" id="txtPersonaCorreoError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header div-header" >
+                                      <h4 class="card-title">Informaci&oacute;n de la solicitud</h4>
+                                      <div class="card-icon">
+                                          <i id="expand-solicitud" class="fa fa-expand" ></i>
+                                          <i id="minus-solicitud" class="fa fa-minus" ></i>
+                                      </div>
+                                  </div>
+                                  <div id="InfoSolicitud" class="card-content collapse hide">
+                                      <div class="card-body">
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Monto Solicitado:</label>
+                                                      <input type="text" id="txtMontoSolicitado" class="form-control bloqueaAuditado" onblur="setNumbreFormat(this.id);" placeholder="0.00" />
+                                                      <span class="text-danger error-message" id="txtMontoSolicitadoError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Monto Aprobado:</label>
+                                                      <input type="text" id="txtMontoAprobado" class="form-control bloqueaAuditado" onblur="setNumbreFormat(this.id);" placeholder="0.00" />
+                                                      <span class="text-danger error-message" id="txtMontoAprobadoError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Cuota estimada:</label>
+                                                      <input type="text" id="txtCuotaEstimada" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtCuotaEstimadaError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Plazo:</label>
+                                                      <select id="cboPlazo" class="form-control"></select>
+                                                      <span class="text-danger error-message" id="cboPlazoError"></span>
+                                                      <input type="hidden" id="Sol_plazo"/>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Sucursal donde formaliza:</label>
+                                                      <select class="form-control bloqueaAuditado" id="txtsucursal_formaliza"></select>
+                                                      <span class="text-danger error-message" id="txtsucursal_formalizaError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header div-header" >
+                                      <h4 class="card-title">Localizaci&oacute;n</h4>
+                                      <div class="card-icon">
+                                          <i id="expand-localizacion" class="fa fa-expand" ></i>
+                                          <i id="minus-localizacion" class="fa fa-minus" ></i>
+                                      </div>
+                                  </div>
+                                  <div id="InfoLocalizacion" class="card-content collapse hide">
+                                      <div class="card-body">
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Provincia:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionProvincia"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionProvinciaError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Cant&oacute;n:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionCanton"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionCantonError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Distrito:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionDistrito"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionDistritoError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Barrio:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionBarrio"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionBarrioError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Poblado:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionPoblado"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionPobladoError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header div-header" >
+                                      <h4 class="card-title">Informaci&oacute;n laboral</h4>
+                                      <div class="card-icon">
+                                          <i id="expand-laboral" class="fa fa-expand" ></i>
+                                          <i id="minus-laboral" class="fa fa-minus" ></i>
+                                      </div>
+                                  </div>
+                                  <div id="InfoLaboral" class="card-content collapse hide">
+                                      <div class="card-body">
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Trabajo Principal:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboTrabajoPrincipal">
+                                                          <option value="" disabled selected>Seleccione una opción</option>
+                                                          <option value="1">Sí</option>
+                                                          <option value="2">No</option>
+                                                      </select>
+                                                      <span class="text-danger error-message" id="cboTrabajoPrincipalError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Lugar de trabajo:</label>
+                                                      <input type="text" id="txtLugarTrabajo" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtLugarTrabajoError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Teléfono:</label>
+                                                      <input type="text" id="txtTelefonoLaboral" class="form-control" />
+                                                      <span class="text-danger error-message" id="txtTelefonoLaboralError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Puesto:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboPuestoLaboral"></select>
+                                                      <span class="text-danger error-message" id="cboPuestoLaboralError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Provincia:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionProvinciaLaboral"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionProvinciaLaboralError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Cant&oacute;n:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionCantonLaboral"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionCantonLaboralError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Distrito:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboLocalizacionDistritoLaboral"></select>
+                                                      <span class="text-danger error-message" id="cboLocalizacionDistritoLaboralError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Jefe inmediato:</label>
+                                                      <input type="text" id="txtJefeInmediato" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtJefeInmediatoError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Direcci&oacute;n:</label>
+                                                      <textarea id="txtDireccionLaboral" class="form-control" rows="4" cols="50"></textarea>
+                                                      <span class="text-danger error-message" id="txtDireccionLaboralError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header div-header" >
+                                      <h4 class="card-title">Referencias familiares, personales</h4>
+                                      <div class="card-icon">
+                                          <i id="expand-referencias" class="fa fa-expand" ></i>
+                                          <i id="minus-referencias" class="fa fa-minus" ></i>
+                                      </div>
+                                  </div>
+                                  <div id="InfoReferencias" class="card-content collapse hide">
+                                      <div class="card-body">
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Nombre:</label>
+                                                      <input type="text" id="txtNombreReferencia" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtNombreReferenciaError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Apellido 1:</label>
+                                                      <input type="text" id="txtApellido1Referencia" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtApellido1ReferenciaError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Apellido 2:</label>
+                                                      <input type="text" id="txtApellido2Referencia" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtApellido2ReferenciaError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Parentesco:</label>
+                                                      <select class="form-control bloqueaAuditado" id="cboParentescoReferencia"></select>
+                                                      <span class="text-danger error-message" id="cboParentescoReferenciaError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Tel&eacute;fono/Celular:</label>
+                                                      <input type="text" id="txtTelefonoReferencia" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtTelefonoReferenciaError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Empresa:</label>
+                                                      <input type="text" id="txtEmpresaReferencia" class="form-control"/>
+                                                      <span class="text-danger error-message" id="txtEmpresaReferenciaError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="text-right">
+                                              <button id="addReference" class="btn btn-primary" type="button">Agregar referencia</button>
+                                          </div>
+                                      </div>
+                                      <div class="table-responsive">
+                                          <table id="referencesTable" class="table d-none">
+                                              <thead>
+                                                  <tr>
+                                                      <th>Nombre</th>
+                                                      <th>Apellido 1</th>
+                                                      <th>Apellido 2</th>
+                                                      <th>Parentesco</th>
+                                                      <th>Teléfono/Celular</th>
+                                                      <th>Empresa</th>
+                                                      <th>Eliminar</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header div-header" >
+                                      <h4 class="card-title">Desembolso</h4>
+                                      <div class="card-icon">
+                                          <i id="expand-desembolso" class="fa fa-expand" ></i>
+                                          <i id="minus-desembolso" class="fa fa-minus" ></i>
+                                      </div>
+                                  </div>
+                                  <div id="InfoDesembolso" class="card-content collapse hide">
+                                      <div class="card-body">
+                                          <div class="row mgb">
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Tipo desembolso:</label>
+                                                      <select id="cboTipoDesembolso" class="form-control select bloqueaAuditado"></select>
+                                                      <span class="text-danger error-message" id="cboTipoDesembolsoError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Tipo cuenta:</label>
+                                                      <select id="cboTipoCuentas" class="form-control bloqueaAuditado">
+                                                          <option value="" disabled selected>Seleccione una opción</option>
+                                                          <option value="10199">AHORROS</option>
+                                                          <option value="10200">CORRIENTE</option>
+                                                      </select>
+                                                      <span class="text-danger error-message" id="cboTipoCuentasError"></span>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-3 div-with-margin">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                      <label>Número Cuenta IBAN:</label>
+                                                      <input type="tel" id="txtNumCuenta" class="form-control inputs_mask bloqueaAuditado"/>
+                                                      <span class="text-danger error-message" id="txtNumCuentaError"></span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-12 text-right p-1">
+                                      <button type="submit" id="btnGuardarInfo" class="btn btn-primary">Enviar</button>
+                                      <button type="button" id="btnScrollToTop" class="btn btn-primary mr-2 ml-2">
+                                          <img src="up-arrow.svg" alt="Descripción del icono">
+                                      </button>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </section>
+          </div>
+      </div>
+  </div>
+
+  <footer class="footer footer-static footer-light navbar-border ml-0">
+      <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+          <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2023 TI Instacredit </span>
+          <span class="float-md-right d-none d-lg-block">Hand-crafted & Made with <i class="feather icon-heart pink"></i></span>
+      </p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+<script src="./VerificarDatosCliente.js"></script>
+<script src="./Validaciones.js"></script>
+<script src="./CargaCombos.js"></script>
+<script src="./Referencias.js"></script>
+</html>

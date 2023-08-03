@@ -1,0 +1,83 @@
+.div-with-margin {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.container {
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.div-header {
+  padding-top: 1.5rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffff !important;
+  border: none !important;
+}
+
+.card-icon i {
+  cursor: pointer;
+  color: #009C9F !important;
+  margin-right: 10px;
+}
+
+.div-header h4 {
+  font-family: Montserrat,Georgia,'Times New Roman',Times,serif;
+  font-weight: 500;
+  letter-spacing: .05rem;
+  font-size: 1rem;
+  color: #404E67;
+  text-transform: uppercase;
+}
+
+.form-control:focus {
+  border-color: #009C9F;
+  box-shadow: 0 0 0 0.2rem rgba(0, 156, 159, 0.25);
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  outline: none;
+  box-shadow: none;
+  border: none
+}
+
+.btn-primary {
+  outline: none;
+  box-shadow: none;
+  border: none
+}
+
+#addReference:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#btnGuardarInfo:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#btnScrollToTop:focus {
+  outline: none;
+  box-shadow: none;
+}
